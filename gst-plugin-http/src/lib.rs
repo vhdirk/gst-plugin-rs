@@ -9,34 +9,24 @@
 #![crate_type = "cdylib"]
 
 #[macro_use]
+extern crate futures;
+extern crate glib;
+#[macro_use]
 extern crate gst_plugin;
-extern crate gst_plugin_simple;
 #[macro_use]
 extern crate gstreamer as gst;
+extern crate gstreamer_base as gst_base;
+#[macro_use]
+extern crate lazy_static;
 extern crate reqwest;
+extern crate tokio_core;
 extern crate url;
-
-use gst_plugin_simple::source::*;
+extern crate either;
 
 mod httpsrc;
 
-use httpsrc::HttpSrc;
-
 fn plugin_init(plugin: &gst::Plugin) -> bool {
-    source_register(
-        plugin,
-        SourceInfo {
-            name: "rshttpsrc".into(),
-            long_name: "HTTP/HTTPS Source".into(),
-            description: "Reads HTTP/HTTPS streams".into(),
-            classification: "Source/File".into(),
-            author: "Sebastian Dröge <sebastian@centricular.com>".into(),
-            rank: 256 + 100,
-            create_instance: HttpSrc::new_boxed,
-            protocols: vec!["http".into(), "https".into()],
-            push_only: true,
-        },
-    );
+    httpsrc::register(plugin);
 
     true
 }
