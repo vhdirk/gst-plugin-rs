@@ -8,15 +8,17 @@
 // except according to those terms.
 
 extern crate byteorder;
-extern crate gstreamer_base_sys as gst_base_ffi;
 #[macro_use]
 extern crate lazy_static;
 extern crate libc;
 pub extern crate glib_sys as glib_ffi;
 pub extern crate gobject_sys as gobject_ffi;
 pub extern crate gstreamer_sys as gst_ffi;
+extern crate gstreamer_base_sys as gst_base_ffi;
+extern crate gstreamer_video_sys as gst_video_ffi;
 
 extern crate gstreamer_base as gst_base;
+extern crate gstreamer_video as gst_video;
 #[macro_use]
 pub extern crate glib;
 #[macro_use]
@@ -80,4 +82,6 @@ pub mod base_src;
 pub mod base_sink;
 #[macro_use]
 pub mod base_transform;
+#[macro_use]
+pub mod video_filter;
 pub mod uri_handler;
