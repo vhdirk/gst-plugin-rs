@@ -9,6 +9,7 @@ members = [
     "gst-plugin-audiofx",
     "gst-plugin-togglerecord",
     "gst-plugin-tutorial",
+    "gst-plugin-rust-av",
 ]
 
 [profile.release]
